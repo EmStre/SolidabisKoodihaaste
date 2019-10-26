@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BullshitChallenge.Models
 {
-     //The bullshit
+    // Lists of bullshit and not-bullshit to be sent to the view.
     public class BullshitViewModel
     {
         public List<string> Bullshit = new List<string>();
