@@ -1,0 +1,60 @@
+﻿@model BullshitViewModel
+@{
+    ViewData["Title"] = "Is It Bullshit or Not?";
+}
+<style>
+    table {
+        border-spacing: 5px;
+        width: 90%;
+    }
+
+    td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #ff63af;
+    }
+</style>
+
+@if (String.IsNullOrEmpty(ViewBag.Message))
+{
+    <h1>@ViewData["Title"]</h1>
+    bool isempty = true;
+    <h2>Not bullshit:</h2>
+    <table>
+        @foreach (var message in Model.NotBullshit)
+        {
+            <tr><td>@message.ToString()</td></tr>
+            isempty = false;
+        }
+        @if (isempty)
+        {
+            <tr>Sorry, but it's all bullshit!!</tr>
+        }
+    </table>
+
+
+    <h2>The real bullshit (in its original beauty):</h2>
+    isempty = true;
+    <table>
+        @foreach (var message in Model.Bullshit)
+        {
+            <tr><td>@message.ToString()</td></tr>
+            isempty = false;
+        }
+        @if (isempty)
+        {
+            <tr>No bullshit! Yay!</tr>
+        }
+    </table>
+}
+else
+{
+    <div style="padding:15px">
+        <p>@ViewBag.Message</p>
+        <p>@ViewBag.Exception</p>
+    </div>
+}
