@@ -56,8 +56,8 @@ namespace BullshitChallenge.Controllers
 
         private BullshitViewModel DecipherTheBullshit(Bullshits bullshits, BullshitViewModel model)
         {
-            // Magic words which determine if the meddage is bullshit or not. Might be a slightly limited dictionary.
-            List<string> keywords = new List<string> { " on ", " ja ", " otti ", " olla ", " ollut ", " kun ", "vanha", " voi ", " ovat ", " mutta " };
+            // Magic words which determine if the message is bullshit or not. Might be a slightly limited dictionary.
+            List<string> keywords = new List<string> { " on ", " ja ", " otti ", " olla ", " ollut ", "vanha", " voi ", " ovat ", " mutta ", " auton ", " tai ", "lääkäri" };
 
             var alphabet = "abcdefghijklmnopqrstuvwxyzåäö";
 
@@ -94,7 +94,7 @@ namespace BullshitChallenge.Controllers
 
                     if (keywords.Any(word => solved.Contains(word)) && !solved.Contains("x"))
                     {
-                        // Make solved be a real sentence by starting with a capital letter (nitpicking)
+                        // Make solved be a real sentence by making it begin with a capital letter (nitpicking)
                         StringBuilder capitalbuilder = GetCapsSentence(builder);
                         solved = capitalbuilder.ToString();
                         model.NotBullshit.Add(solved);
